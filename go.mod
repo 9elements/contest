@@ -3,7 +3,11 @@ module github.com/facebookincubator/contest
 go 1.15
 
 require (
+<<<<<<< HEAD
 	github.com/benbjohnson/clock v1.1.0
+=======
+	github.com/aws/aws-sdk-go v1.36.1
+>>>>>>> 2619d19... yv3: Add initial code for yv3
 	github.com/chappjc/logrus-prefix v0.0.0-20180227015900-3a1d64819adb
 	github.com/fsnotify/fsnotify v1.4.9 // indirect
 	github.com/go-sql-driver/mysql v1.5.0
