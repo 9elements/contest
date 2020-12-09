@@ -15,7 +15,7 @@ CI=${CI:-false}
 
 # Wait until mysql instance is up and running.
 attempts=0
-max_attempts=5
+max_attempts=10
 while true; do
   echo "Waiting for mysql to settle"
   mysqladmin -h mysql -P 3306 -u contest --protocol tcp --password=contest ping && break || true
