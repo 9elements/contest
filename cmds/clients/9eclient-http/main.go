@@ -26,26 +26,16 @@ import (
 	flag "github.com/spf13/pflag"
 )
 
-// Unauthenticated, unencrypted sample HTTP client for ConTest.
-// Requires the `httplistener` plugin for the API listener.
-//
-// Usage examples:
-// Start a job with the provided job description from a JSON file
-//   ./contestcli-http start < start.json
-//
-// Get the status of a job whose ID is 10
-//   ./contestcli-http status 10
-
 const (
-	defaultRequestor = "contestcli-http"
-	jobWaitPoll      = 10 * time.Second
+	defaultRequestor = "9eclient-http"
+	jobWaitPoll      = 30 * time.Second
 )
 
 var (
 	flagAddr      = flag.StringP("addr", "a", "http://localhost:8080", "ConTest server [scheme://]host:port[/basepath] to connect to")
 	flagRequestor = flag.StringP("requestor", "r", defaultRequestor, "Identifier of the requestor of the API call")
 	flagWait      = flag.BoolP("wait", "w", false, "After starting a job, wait for it to finish, and exit 0 only if it is successful")
-	flagYAML      = flag.BoolP("yaml", "Y", false, "Parse job descriptor as YAML instead of JSON")
+	flagYAML      = flag.BoolP("yaml", "Y", true, "Parse job descriptor as YAML instead of JSON")
 	flagS3        = flag.BoolP("s3", "s", false, "Upload Job Result to S3 Bucket")
 )
 
