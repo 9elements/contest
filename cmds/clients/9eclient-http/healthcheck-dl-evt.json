@@ -31,7 +31,7 @@
                         "parameters": {
                             "args": [
                                 "-c",
-                                "scp -i {{ getPrivateKeyFile .ID }} /root/contest/cmds/contest/assets/coreboot-deltalake-evt-dut-prov.rom {{ getBmcUser .ID }}@{{ getBmcHost .ID }}:/tmp/coreboot-deltalake-evt-{{ .Name }}.rom"
+                                "scp -i {{ getPrivateKeyFile .ID }} /root/contest/cmds/contest/assets/coreboot-deltalake-evt-dut-prov.rom {{ getBmcUser .ID }}@{{ getBmcHost .ID }}:/tmp/coreboot-deltalake-evt-{{ .ID }}.rom"
                             ],
                             "executable": [
                                 "sh"
@@ -59,7 +59,7 @@
                             "private_key_file": ["{{ getPrivateKeyFile .ID }}"],
                             "host": ["{{ getBmcHost .ID }}"],
                             "executable": ["/usr/bin/fw-util"],
-                            "args": ["{{ getSlotToTest .ID }}", "sb", "--update", "bios", "/tmp/coreboot-deltalake-evt-{{ .Name }}.rom"],
+                            "args": ["{{ getSlotToTest .ID }}", "sb", "--update", "bios", "/tmp/coreboot-deltalake-evt-{{ .ID }}.rom"],
                             "expect": ["bios succeeded"],
                             "timeout" : ["25m"]
                         }
@@ -113,7 +113,7 @@
                             "private_key_file": ["{{ getPrivateKeyFile .ID }}"],
                             "host": ["{{ getBmcHost .ID }}"],
                             "executable": ["rm"],
-                            "args": ["-R", "-f", "/tmp/coreboot-deltalake-evt-{{ .Name }}.rom"],
+                            "args": ["-R", "-f", "/tmp/coreboot-deltalake-evt-{{ .ID }}.rom"],
                             "timeout" : ["2m"]
                         }
                     }

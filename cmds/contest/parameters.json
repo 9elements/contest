@@ -1,5 +1,5 @@
 [{
-    "ID" : "yv3-evt-slot2.business.dut.sr1.9esec.dev",
+    "ID" : "slot2",
     "parameter":  {
         "privateKeyFile" : "/root/.ssh/id_rsa",
         "bmcHost" : "yv3-evt-bmc.business.dut.sr1.9esec.dev",
@@ -9,7 +9,7 @@
         "githubRepo" : "git@github.com:walterchris/osf-partner-template"
         }
 }, {
-    "ID" : "yv3-evt-slot3.business.dut.sr1.9esec.dev",
+    "ID" : "slot3",
     "parameter": {
         "privateKeyFile" : "/root/.ssh/id_rsa",
         "bmcHost" : "yv3-evt-bmc.business.dut.sr1.9esec.dev",
