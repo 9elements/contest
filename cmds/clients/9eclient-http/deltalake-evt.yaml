@@ -23,25 +23,25 @@ TestDescriptors:
                     label: Cloning coreboot
                     parameters:
                         executable: [git]
-                        args: ["clone","{{ getGithubRepo .ID }}", "/tmp/coreboot-{{ .Name }}"]
+                        args: ["clone","{{ getGithubRepo .ID }}", "/tmp/coreboot-{{ .ID }}"]
                 -   name: cmd
                     label: Build coreboot
                     parameters:
                         executable: [sh]
                         args: ["-c","PLATFORM=deltalake-evt HASH=permissive ./build_external.sh"]
-                        dir: ["/tmp/coreboot-{{ .Name }}"]
+                        dir: ["/tmp/coreboot-{{ .ID }}"]
                 -   name: cmd
                     label: Extract Internal Versions
                     parameters:
                         executable: [vpd]
-                        args: ["-f", "/tmp/coreboot-{{ .Name }}/coreboot/coreboot-deltalake-evt.rom", "-g", "internal_versions"]
-                        dir: ["/tmp/coreboot-{{ .Name }}/linuxboot-artifacts"]
+                        args: ["-f", "/tmp/coreboot-{{ .ID }}/coreboot/coreboot-deltalake-evt.rom", "-g", "internal_versions"]
+                        dir: ["/tmp/coreboot-{{ .ID }}/linuxboot-artifacts"]
                         emit_stdout: [true]
                 -   name: cmd
                     label: SCP binary to target
                     parameters:
                         executable: [sh]
-                        args: ["-c", "scp -i {{ getPrivateKeyFile .ID }} /tmp/coreboot-{{ .Name }}/coreboot/coreboot-deltalake-evt.rom {{ getBmcUser .ID }}@{{ getBmcHost .ID }}:/tmp/coreboot-deltalake-evt-{{ .Name }}.rom"]
+                        args: ["-c", "scp -i {{ getPrivateKeyFile .ID }} /tmp/coreboot-{{ .ID }}/coreboot/coreboot-deltalake-evt.rom {{ getBmcUser .ID }}@{{ getBmcHost .ID }}:/tmp/coreboot-deltalake-evt-{{ .ID }}.rom"]
                 -   name: sshcmd
                     label: Power off DUT
                     parameters:
@@ -59,7 +59,7 @@ TestDescriptors:
                         private_key_file: ["{{ getPrivateKeyFile .ID }}"]
                         host: ["{{ getBmcHost .ID }}"]
                         executable: [/usr/bin/fw-util]
-                        args: ["{{ getSlotToTest .ID }}", "sb", "--update", "bios", "/tmp/coreboot-deltalake-evt-{{ .Name }}.rom"]
+                        args: ["{{ getSlotToTest .ID }}", "sb", "--update", "bios", "/tmp/coreboot-deltalake-evt-{{ .ID }}.rom"]
                         expect: ["bios succeeded"]
                         timeout: ["25m"]
                 -   name: sshcmd
@@ -104,7 +104,7 @@ TestDescriptors:
                     label: Delete local Files
                     parameters:
                         executable: [rm]
-                        args: ["-R", "-f", "/tmp/coreboot-{{ .Name }}"]
+                        args: ["-R", "-f", "/tmp/coreboot-{{ .ID }}"]
                 -   name: sshcmd
                     label: Delete BMC Files
                     parameters:
@@ -112,7 +112,7 @@ TestDescriptors:
                         private_key_file: ["{{ getPrivateKeyFile .ID }}"]
                         host: ["{{ getBmcHost .ID }}"]
                         executable: [rm]
-                        args: ["-R", "-f", "/tmp/coreboot-deltalake-evt-{{ .Name }}.rom"]
+                        args: ["-R", "-f", "/tmp/coreboot-deltalake-evt-{{ .ID }}.rom"]
                         timeout: ["2m"]
 Reporting:
     RunReporters:
