@@ -8,7 +8,7 @@ TestDescriptors:
             FileURI: hosts.csv
             Shuffle: true
             MinNumberDevices: 1
-            MaxNumberDevices: 3
+            MaxNumberDevices: 1
         TargetManagerReleaseParameters:
         TestFetcherName: literal
         TestFetcherFetchParameters:
@@ -114,6 +114,16 @@ TestDescriptors:
                         executable: [rm]
                         args: ["-R", "-f", "/tmp/coreboot-deltalake-evt-{{ .ID }}.rom"]
                         timeout: ["2m"]
+                -   name: sshcmd
+                    label: Power off Slot
+                    parameters:
+                        user: ["{{ getBmcUser .ID }}"]
+                        private_key_file: ["{{ getPrivateKeyFile .ID }}"]
+                        host: ["{{ getBmcHost .ID }}"]
+                        executable: [/usr/local/bin/power-util]
+                        args: ["{{ getSlotToTest .ID }}", "off"]
+                        expect: ["to OFF state..."]
+                        timeout: ["5m"]
 Reporting:
     RunReporters:
         -   name: TargetSuccess
