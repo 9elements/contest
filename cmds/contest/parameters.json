@@ -21,7 +21,7 @@
 }, {
     "ID" : "tp-slot1",
     "parameter": {
-        "privateKeyFile" : "/home/nabla/.ssh/id_rsa",
+        "privateKeyFile" : "/root/.ssh/id_rsa",
         "bmcHost" : "tp-bmc.business.dut.sr1.9esec.dev",
         "bmcUser" : "root",
         "bmcPassword" : "0penBmc",
