@@ -11,6 +11,7 @@ TestDescriptors:
     FileURI: hosts.csv
     MinNumberDevices: 1
     MaxNumberDevices: 3
+    HostPrefixes: ["yv3-evt-slot"]
   TargetManagerReleaseParameters: {}
   TestFetcherName: literal
   TestFetcherFetchParameters:
