@@ -143,6 +143,8 @@ var userFunctions = map[string]interface{}{
 		for _, value := range parameter {
 			if value.ID == a {
 				switch value.Parameter.SlotToTest {
+				case "mb":
+					return "/dev/ttyS1", nil
 				case "slot1":
 					return "/dev/ttyS1", nil
 				case "slot2":
