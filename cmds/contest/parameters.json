@@ -18,4 +18,14 @@
         "slotToTest": "slot3",
         "githubRepo" : "git@github.com:walterchris/osf-partner-template"
         }
+}, {
+    "ID" : "tp-slot1",
+    "parameter": {
+        "privateKeyFile" : "/home/nabla/.ssh/id_rsa",
+        "bmcHost" : "tp-bmc.business.dut.sr1.9esec.dev",
+        "bmcUser" : "root",
+        "bmcPassword" : "0penBmc",
+        "slotToTest": "mb",
+        "githubRepo" : "git@github.com:walterchris/osf-partner-template"
+        }
 }]
