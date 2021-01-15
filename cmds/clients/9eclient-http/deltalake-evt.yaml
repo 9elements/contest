@@ -7,6 +7,7 @@ TestDescriptors:
         TargetManagerAcquireParameters:
             FileURI: hosts.csv
             Shuffle: true
+            HostPrefixes: ["yv3-evt-slot"]
             MinNumberDevices: 1
             MaxNumberDevices: 1
         TargetManagerReleaseParameters:
