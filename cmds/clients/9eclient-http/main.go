@@ -239,4 +239,5 @@ func wait(params url.Values, jobWaitPoll time.Duration) (string, error) {
 		// TODO use  time.Ticker instead of time.Sleep
 		time.Sleep(jobWaitPoll)
 	}
+	return "", nil
 }
