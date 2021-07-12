@@ -23,7 +23,6 @@ import (
 var Name = "postdone"
 
 var log = logging.GetLogger("reporter/" + strings.ToLower(Name))
-var jobID int
 
 // postdone is a reporter that does nothing. Probably only useful for testing.
 type postdone struct{}
